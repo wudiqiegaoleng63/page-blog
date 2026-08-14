@@ -18,11 +18,11 @@
     const icon = themeToggle?.querySelector(".theme-icon");
     if (icon) icon.textContent = theme === "dark" ? "☾" : "☼";
     themeColorMeta?.setAttribute("content", theme === "dark" ? "#20252b" : "#efe7e3");
-    try { localStorage.setItem("mica-theme", theme); } catch (_) { /* private mode */ }
+    try { localStorage.setItem("lishaoyang-theme", theme); } catch (_) { /* private mode */ }
   };
 
   let savedTheme = null;
-  try { savedTheme = localStorage.getItem("mica-theme"); } catch (_) { /* private mode */ }
+  try { savedTheme = localStorage.getItem("lishaoyang-theme"); } catch (_) { /* private mode */ }
   setTheme(savedTheme === "dark" ? "dark" : "light");
 
   themeToggle?.addEventListener("click", () => {
@@ -124,14 +124,4 @@
     });
   }
 
-  const contactLink = document.querySelector('a[href^="mailto:"]');
-  const toast = document.querySelector("[data-toast]");
-  let toastTimer;
-  contactLink?.addEventListener("click", () => {
-    if (!toast) return;
-    toast.textContent = "邮件地址是演示内容，替换成你的联系方式即可。";
-    toast.classList.add("is-visible");
-    window.clearTimeout(toastTimer);
-    toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), 3200);
-  });
 })();
